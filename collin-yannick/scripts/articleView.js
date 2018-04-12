@@ -96,9 +96,15 @@ articleView.handleCategoryFilter = function() {
 
 articleView.handleMainNav = function() {
   // TODO: Add an event handler to .main-nav elements that will power the Tabs feature.
-  let mainNav = $('')
   // Clicking any .tab element should hide all the .tab-content sections, and then reveal the single .tab-content section that is associated with the clicked .tab element.
   // So: You need to dynamically build a selector string with the correct ID, based on the data available to you on the .tab element that was clicked.
+  $('.tab').click(function(){
+    let $selectedTab = $(this).attr('data-content');
+    $('.tab-content').hide();
+    $(`#${$selectedTab}`).show();
+    $('.template').hide();
+    console.log($selectedTab);
+  });
 
   // REVIEW: Now trigger a click on the first .tab element, to set up the page.
   $('.main-nav .tab:first').click();
@@ -117,4 +123,6 @@ $(document).ready(function() {
   articleView.populateFilters();
   articleView.handleAuthorFilter();
   articleView.handleCategoryFilter();
-})
+  articleView.handleMainNav();
+  articleView.setTeasers();
+});
