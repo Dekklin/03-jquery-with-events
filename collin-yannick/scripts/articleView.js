@@ -74,12 +74,12 @@ articleView.handleCategoryFilter = function() {
 
 articleView.handleMainNav = function() {
 
-  $('.main-nav').click(function(){
-
-
-
+  $('.tab').click(function(){
+    let $selectedTab = $(this).attr('data-content');
+    $('.tab-content').hide();
+    $(`#${$selectedTab}`).show();
+    $('.template').hide();
   });
-
   $('.main-nav .tab:first').click(function);
 };
 
@@ -95,4 +95,6 @@ $(document).ready(function() {
   articleView.populateFilters();
   articleView.handleAuthorFilter();
   articleView.handleCategoryFilter();
-})
+  articleView.handleMainNav();
+  articleView.setTeasers();
+});
